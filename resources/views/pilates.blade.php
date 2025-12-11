@@ -39,6 +39,8 @@
         <section id="testimonials"><x-testimonials /></section>
         <section id="cta"><x-cta /></section>
     </div>
+
+    <x-footer />
 </body>
 
 </html>
