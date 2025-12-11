@@ -1,0 +1,132 @@
+.pricing-section {
+    background: linear-gradient(180deg, #ffffff 0%, #f9fafb 100%);
+}
+
+.pricing-section .section-header {
+    margin-bottom: var(--spacing-2xl);
+}
+
+.pricing-section .section-title {
+    font-size: 2.5rem;
+    color: var(--color-gray-900);
+}
+
+.pricing-section .section-subtitle {
+    font-size: 1.125rem;
+    color: var(--color-gray-600);
+    max-width: 700px;
+    margin: var(--spacing-md) auto 0;
+}
+
+.pricing-table-wrapper {
+    overflow-x: auto;
+    margin-bottom: var(--spacing-xl);
+}
+
+.pricing-table {
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+    border-collapse: separate;
+    border-spacing: 0;
+    background: var(--color-white);
+    border-radius: var(--radius-xl);
+    overflow: hidden;
+    box-shadow: var(--shadow-lg);
+}
+
+.pricing-table thead {
+    background: var(--gradient-primary);
+}
+
+.pricing-table th {
+    padding: var(--spacing-lg);
+    text-align: left;
+    color: var(--color-white);
+    font-weight: 700;
+    font-size: 1.125rem;
+}
+
+.pricing-table td {
+    padding: var(--spacing-lg);
+    border-bottom: 1px solid var(--color-gray-200);
+}
+
+.pricing-row {
+    transition: all var(--transition-base);
+}
+
+.pricing-row:hover {
+    background: var(--color-gray-50);
+}
+
+.pricing-row.popular {
+    background: linear-gradient(90deg, rgba(102, 126, 234, 0.05) 0%, rgba(118, 75, 162, 0.05) 100%);
+}
+
+.pricing-row:last-child td {
+    border-bottom: none;
+}
+
+.package-name {
+    font-weight: 700;
+    color: var(--color-gray-900);
+    font-size: 1.125rem;
+    position: relative;
+}
+
+.popular-badge {
+    display: inline-block;
+    margin-left: var(--spacing-sm);
+    padding: 0.25rem 0.75rem;
+    background: var(--gradient-primary);
+    color: var(--color-white);
+    border-radius: var(--radius-full);
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.package-contents {
+    color: var(--color-gray-700);
+}
+
+.discount-badge {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+    color: var(--color-white);
+    border-radius: var(--radius-lg);
+    font-weight: 700;
+    font-size: 1rem;
+}
+
+.pricing-cta {
+    margin-top: var(--spacing-2xl);
+}
+
+@media (max-width: 768px) {
+    .pricing-section .section-title {
+        font-size: 2rem;
+    }
+
+    .pricing-table {
+        font-size: 0.875rem;
+    }
+
+    .pricing-table th,
+    .pricing-table td {
+        padding: var(--spacing-md);
+    }
+
+    .package-name {
+        font-size: 1rem;
+    }
+
+    .popular-badge {
+        display: block;
+        margin-left: 0;
+        margin-top: var(--spacing-xs);
+        width: fit-content;
+    }
+}
