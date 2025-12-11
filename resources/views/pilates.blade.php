@@ -22,6 +22,8 @@
 </head>
 
 <body class="antialiased">
+    <x-navbar />
+
     <!-- Theme Toggle Button -->
     <button id="theme-toggle"
         class="fixed top-6 right-6 z-50 p-3 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 border"
@@ -30,12 +32,12 @@
     </button>
 
     <div class="app">
-        <x-hero />
-        <x-why-choose-us />
-        <x-featured-products />
-        <x-pricing />
-        <x-testimonials />
-        <x-cta />
+        <section id="hero"><x-hero /></section>
+        <section id="features"><x-why-choose-us /></section>
+        <section id="products"><x-featured-products /></section>
+        <section id="pricing"><x-pricing /></section>
+        <section id="testimonials"><x-testimonials /></section>
+        <section id="cta"><x-cta /></section>
     </div>
 </body>
 
