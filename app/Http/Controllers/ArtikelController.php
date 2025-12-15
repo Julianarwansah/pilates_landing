@@ -48,7 +48,7 @@ class ArtikelController extends Controller
             ->latest('created_at')
             ->paginate(12);
 
-        return view('artikel.index', compact('artikels'));
+        return view('artikel', compact('artikels'));
     }
 
     /**

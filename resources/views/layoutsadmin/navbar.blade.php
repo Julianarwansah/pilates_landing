@@ -1,34 +1,46 @@
-<!-- Header -->
-<header class="bg-white shadow-sm z-10 border-b border-amber-200">
-    <div class="flex items-center justify-between px-4 py-4 lg:px-6">
-        <div class="flex items-center">
-            <button id="toggleSidebar" class="text-amber-900 hover:text-amber-700 mr-4">
-                <i class="fas fa-bars text-xl"></i>
-            </button>
-            <h1 class="text-xl lg:text-2xl font-bold text-amber-900">@yield('page-title', 'Dashboard')</h1>
+<header class="bg-gradient-dark theme-border border-b sticky top-0 z-40">
+    <div class="px-4 sm:px-8 py-4 flex items-center justify-between">
+        <!-- Mobile Menu Button -->
+        <button id="menuBtn"
+            class="lg:hidden p-2 theme-bg-secondary rounded-lg hover:bg-blue-400/10 transition-all duration-300 mr-4">
+            <i class="fas fa-bars text-blue-400 text-xl"></i>
+        </button>
+
+        <div class="animate-fade-in-up flex-1">
+            <h2 class="text-xl sm:text-2xl font-bold text-blue-400">Dashboard Overview</h2>
+            <p class="text-xs sm:text-sm theme-text-secondary hidden sm:block">Welcome back,
+                {{ auth()->user()->nama_lengkap ?? 'Admin' }}! Here's what's happening today.</p>
         </div>
-        
-        <div class="flex items-center space-x-4">
-            <!-- Profile Dropdown -->
-            <div class="relative">
-                <button id="profileButton" class="flex items-center text-amber-900 hover:text-amber-700 focus:outline-none">
-                    <i class="fas fa-user-circle text-2xl"></i>
-                </button>
-                <!-- Dropdown Menu -->
-                <div id="profileDropdown" class="hidden absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-lg border border-amber-200 py-1 z-50">
-                    <div class="px-4 py-2 border-b border-amber-100">
-                        <p class="text-sm font-medium text-amber-900">{{ auth()->user()->name }}</p>
-                        <p class="text-xs text-amber-600">{{ auth()->user()->email }}</p>
-                    </div>
-                    <div class="border-t border-amber-100 mt-1"></div>
-                    <form method="POST" action="{{ route('logout') }}">
-                        @csrf
-                        <button type="submit" class="block w-full text-left px-4 py-2 text-sm text-red-600 hover:bg-red-50 transition">
-                            <i class="fas fa-sign-out-alt mr-2"></i>Logout
-                        </button>
-                    </form>
-                </div>
+
+        <div class="flex items-center space-x-2 sm:space-x-4 animate-fade-in-up delay-200">
+            <div class="relative hidden md:block">
+                <input type="text" placeholder="Search..."
+                    class="px-4 py-2 pl-10 theme-bg-secondary theme-border border rounded-lg focus:outline-none focus:border-blue-400 transition-all theme-text-primary w-48 lg:w-64">
+                <i class="fas fa-search absolute left-3 top-3 theme-text-secondary"></i>
             </div>
+
+            <button
+                class="md:hidden p-2 theme-bg-secondary rounded-lg hover:bg-blue-400/10 transition-all duration-300">
+                <i class="fas fa-search text-blue-400 text-lg"></i>
+            </button>
+
+            <!-- Theme Toggle Button -->
+            <button id="themeToggle"
+                class="theme-toggle-btn p-2 theme-bg-secondary rounded-lg hover:bg-blue-400/10 transition-all duration-300 relative">
+                <i class="fas fa-sun text-blue-400 text-lg" id="lightIcon"></i>
+                <i class="fas fa-moon text-blue-400 text-lg hidden" id="darkIcon"></i>
+            </button>
+
+            <button class="relative p-2 theme-bg-secondary rounded-lg hover:bg-blue-400/10 transition-all duration-300">
+                <i class="fas fa-bell text-blue-400 text-lg"></i>
+                <span
+                    class="absolute -top-1 -right-1 w-5 h-5 bg-red-500 rounded-full text-xs flex items-center justify-center animate-pulse text-white">3</span>
+            </button>
+
+            <button
+                class="p-2 theme-bg-secondary rounded-lg hover:bg-blue-400/10 transition-all duration-300 hidden sm:block">
+                <i class="fas fa-envelope text-blue-400 text-lg"></i>
+            </button>
         </div>
     </div>
 </header>

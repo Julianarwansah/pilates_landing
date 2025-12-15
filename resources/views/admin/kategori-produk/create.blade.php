@@ -8,49 +8,43 @@
 @section('content')
     <script src="https://cdn.tiny.cloud/1/pxtqyte6btxrd0039qdxzx1frknn13n8l8nbob563irb7q96/tinymce/8/tinymce.min.js"
         referrerpolicy="origin" crossorigin="anonymous"></script>
-    <div class="container-fluid px-3 md:px-4">
+    <div class="container-fluid px-3 md:px-4 animate-fade-in-up">
         <!-- Header -->
-        <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-6">
+        <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-6 gap-4">
             <div class="mb-4 md:mb-0">
-                <div class="flex items-center space-x-2 text-sm text-gray-500 mb-2">
+                <div class="flex items-center space-x-2 text-sm theme-text-secondary mb-2">
                     <a href="{{ route('admin.kategori-produks.index') }}"
-                        class="text-orange-600 hover:text-orange-800 transition-colors duration-200">
+                        class="text-blue-400 hover:text-blue-300 transition-colors duration-200">
                         Kategori
                     </a>
                     <span>/</span>
                     <span>Tambah Kategori</span>
                 </div>
-                <h1 class="text-xl md:text-2xl font-bold text-gray-800">Tambah Kategori Baru</h1>
-                <p class="text-gray-600 text-sm md:text-base">Kelola kategori produk Anda</p>
+                <h1 class="text-xl md:text-2xl font-bold text-blue-400">Tambah Kategori Baru</h1>
+                <p class="theme-text-secondary text-sm md:text-base">Kelola kategori produk Anda</p>
             </div>
             <a href="{{ route('admin.kategori-produks.index') }}"
-                class="inline-flex items-center px-4 py-2 bg-gray-600 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 transition w-full md:w-auto justify-center mt-4 md:mt-0">
-                <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18">
-                    </path>
-                </svg>
+                class="inline-flex items-center px-4 py-2 theme-bg-secondary theme-border border rounded-lg font-semibold text-xs theme-text-primary uppercase tracking-widest hover:border-blue-400 transition w-full md:w-auto justify-center mt-4 md:mt-0 shadow-md hover:shadow-lg">
+                <i class="fas fa-arrow-left mr-2"></i>
                 Kembali ke Daftar
             </a>
         </div>
 
         <!-- Storage Info Banner -->
-        <div class="mb-6 bg-blue-50 border border-blue-200 rounded-lg p-4">
+        <div
+            class="mb-6 bg-blue-500/10 border border-blue-500/30 rounded-lg p-4 backdrop-blur-sm animate-fade-in-up delay-100">
             <div class="flex items-start">
-                <svg class="w-5 h-5 text-blue-500 mt-0.5 mr-3 flex-shrink-0" fill="none" stroke="currentColor"
-                    viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                        d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                </svg>
+                <i class="fas fa-cloud text-blue-400 mt-0.5 mr-3 flex-shrink-0 text-lg"></i>
                 <div>
-                    <h4 class="text-sm font-medium text-blue-800">Cloudinary Storage Active</h4>
-                    <p class="text-xs text-blue-700 mt-1">
+                    <h4 class="text-sm font-medium text-blue-400">Cloudinary Storage Active</h4>
+                    <p class="text-xs theme-text-secondary mt-1 opacity-90">
                         Gambar kategori akan dioptimalkan secara otomatis dan disimpan di Cloudinary untuk performa terbaik.
                     </p>
                 </div>
             </div>
         </div>
 
-        <div class="grid grid-cols-1 xl:grid-cols-3 gap-6">
+        <div class="grid grid-cols-1 xl:grid-cols-3 gap-6 animate-fade-in-up delay-200">
             <!-- Main Form -->
             <div class="xl:col-span-2">
                 <form action="{{ route('admin.kategori-produks.store') }}" method="POST" enctype="multipart/form-data"
@@ -58,92 +52,89 @@
                     @csrf
 
                     <!-- Basic Info Card -->
-                    <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-4 md:p-6">
-                        <h3 class="font-medium text-gray-900 mb-4 text-lg">Informasi Dasar</h3>
+                    <div class="bg-gradient-card backdrop-blur-md theme-border border rounded-xl shadow-2xl p-4 md:p-6">
+                        <h3 class="font-bold text-lg mb-4 text-blue-400">Informasi Dasar</h3>
 
                         <div class="mb-4">
-                            <label for="nama_kategori" class="block text-sm font-medium text-gray-700 mb-2">Nama Kategori
+                            <label for="nama_kategori" class="block text-sm font-semibold theme-text-secondary mb-2">Nama
+                                Kategori
                                 *</label>
                             <input type="text" name="nama_kategori" id="nama_kategori" value="{{ old('nama_kategori') }}"
                                 required
-                                class="w-full px-3 md:px-4 py-2 md:py-3 text-lg font-semibold border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-orange-500"
+                                class="w-full px-4 py-3 text-lg font-semibold theme-bg-secondary theme-border border rounded-lg focus:outline-none focus:border-blue-400 focus:ring-1 focus:ring-blue-400 transition theme-text-primary placeholder-gray-500"
                                 placeholder="Masukkan nama kategori...">
                             @error('nama_kategori')
-                                <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
+                                <p class="mt-2 text-sm text-red-400">{{ $message }}</p>
                             @enderror
                         </div>
                     </div>
 
                     <!-- Rich Text Editor Card -->
-                    <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-4 md:p-6">
-                        <label for="deskripsi" class="block text-sm font-medium text-gray-700 mb-2">
+                    <div class="bg-gradient-card backdrop-blur-md theme-border border rounded-xl shadow-2xl p-4 md:p-6">
+                        <label for="deskripsi" class="block text-sm font-semibold theme-text-secondary mb-2">
                             Deskripsi
-                            <span class="text-xs text-gray-500 font-normal ml-2 hidden md:inline">
-                                <svg class="w-4 h-4 inline" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M13 10V3L4 14h7v7l9-11h-7z"></path>
-                                </svg>
+                            <span class="text-xs theme-text-secondary opacity-70 font-normal ml-2 hidden md:inline">
+                                <i class="fas fa-file-word mr-1"></i>
                                 Paste from Word/Google Docs - formatting preserved!
                             </span>
                         </label>
 
-                        <textarea name="deskripsi" id="deskripsi" class="tinymce-editor">{{ old('deskripsi') }}</textarea>
+                        <div class="theme-tinymce-wrapper">
+                            <textarea name="deskripsi" id="deskripsi"
+                                class="tinymce-editor">{{ old('deskripsi') }}</textarea>
+                        </div>
 
                         @error('deskripsi')
-                            <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
+                            <p class="mt-2 text-sm text-red-400">{{ $message }}</p>
                         @enderror
                     </div>
 
                     <!-- Featured Image Card -->
-                    <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-4 md:p-6">
+                    <div class="bg-gradient-card backdrop-blur-md theme-border border rounded-xl shadow-2xl p-4 md:p-6">
                         <div class="flex items-center justify-between mb-4">
-                            <h3 class="text-lg font-semibold text-gray-800">Gambar Kategori</h3>
+                            <h3 class="text-lg font-bold text-blue-400">Gambar Kategori</h3>
                             <span
-                                class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">
-                                <svg class="w-3 h-3 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01">
-                                    </path>
-                                </svg>
+                                class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-500/10 text-green-400 border border-green-500/20">
+                                <i class="fas fa-check-circle mr-1"></i>
                                 Cloudinary
                             </span>
                         </div>
 
                         <div class="mb-4">
-                            <label for="gambar" class="block text-sm font-medium text-gray-700 mb-2">Upload Gambar</label>
+                            <label for="gambar" class="block text-sm font-semibold theme-text-secondary mb-2">Upload
+                                Gambar</label>
                             <input type="file" name="gambar" id="gambar" accept="image/*"
-                                class="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-orange-500 focus:border-orange-500">
-                            <p class="mt-1 text-xs text-gray-500">
+                                class="w-full px-3 py-2 theme-bg-secondary theme-border border rounded-lg focus:outline-none focus:border-blue-400 transition text-sm theme-text-primary file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-blue-500/10 file:text-blue-400 hover:file:bg-blue-500/20">
+                            <p class="mt-1 text-xs theme-text-secondary opacity-70">
                                 Format: JPEG, PNG, JPG, GIF, WEBP. Max: 5MB.
                             </p>
                             @error('gambar')
-                                <p class="mt-1 text-sm text-red-600">{{ $message }}</p>
+                                <p class="mt-1 text-sm text-red-400">{{ $message }}</p>
                             @enderror
                         </div>
 
                         <div id="imagePreview" class="hidden mt-4">
-                            <div class="relative">
-                                <img id="previewImage" class="max-w-full h-auto rounded-lg shadow-md">
-                                <div class="absolute top-2 right-2 bg-green-600 text-white text-xs px-2 py-1 rounded-full">
-                                    Cloudinary Ready
+                            <div class="relative inline-block">
+                                <img id="previewImage"
+                                    class="max-w-full h-auto rounded-lg shadow-lg theme-border border ring-2 ring-blue-400/30">
+                                <div
+                                    class="absolute top-2 right-2 bg-green-500 text-white text-xs px-2 py-1 rounded-full shadow-lg">
+                                    Ready
                                 </div>
                             </div>
                         </div>
                     </div>
 
                     <!-- Submit Buttons -->
-                    <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-4 md:p-6">
-                        <div class="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
+                    <div class="bg-gradient-card backdrop-blur-md theme-border border rounded-xl shadow-2xl p-4 md:p-6">
+                        <div class="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0 gap-4">
                             <a href="{{ route('admin.kategori-produks.index') }}"
-                                class="px-6 py-2 bg-white border border-gray-300 text-gray-700 rounded-md hover:bg-gray-50 transition text-center w-full md:w-auto">
+                                class="px-6 py-2.5 theme-bg-secondary theme-border border theme-text-primary rounded-lg hover:border-blue-400 transition text-center w-full md:w-auto font-medium">
                                 Batal
                             </a>
                             <button type="submit"
-                                class="px-6 py-2 bg-orange-600 text-white rounded-md hover:bg-orange-700 transition flex items-center justify-center w-full md:w-auto">
-                                <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M5 13l4 4L19 7"></path>
-                                </svg>
+                                class="px-6 py-2.5 bg-gradient-primary text-white rounded-lg hover:shadow-lg hover:shadow-blue-500/30 transition flex items-center justify-center w-full md:w-auto font-bold transform hover:-translate-y-0.5">
+                                <i class="fas fa-save mr-2"></i>
                                 Simpan Kategori
                             </button>
                         </div>
@@ -154,72 +145,60 @@
             <!-- Sidebar -->
             <div class="space-y-6">
                 <!-- Settings -->
-                <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-4 md:p-6">
-                    <h3 class="text-lg font-semibold text-gray-800 mb-4">Pengaturan</h3>
+                <div class="bg-gradient-card backdrop-blur-md theme-border border rounded-xl shadow-2xl p-4 md:p-6">
+                    <h3 class="text-lg font-bold text-blue-400 mb-4">Pengaturan</h3>
 
                     <div class="mb-4">
-                        <label for="urutan" class="block text-sm font-medium text-gray-700 mb-2">Urutan</label>
+                        <label for="urutan" class="block text-sm font-semibold theme-text-secondary mb-2">Urutan</label>
                         <input type="number" name="urutan" id="urutan" value="{{ old('urutan') }}"
-                            class="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-orange-500 focus:border-orange-500"
+                            class="w-full px-4 py-2 theme-bg-secondary theme-border border rounded-lg focus:outline-none focus:border-blue-400 transition theme-text-primary"
                             min="0">
-                        <p class="mt-1 text-xs text-gray-500">Biarkan kosong untuk urutan otomatis</p>
+                        <p class="mt-1 text-xs theme-text-secondary opacity-70">Biarkan kosong untuk urutan otomatis</p>
                         @error('urutan')
-                            <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
+                            <p class="mt-2 text-sm text-red-400">{{ $message }}</p>
                         @enderror
                     </div>
                 </div>
 
                 <!-- SEO Metadata -->
-                <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-4 md:p-6">
-                    <h3 class="text-lg font-semibold text-gray-800 mb-4">SEO & Metadata</h3>
+                <div class="bg-gradient-card backdrop-blur-md theme-border border rounded-xl shadow-2xl p-4 md:p-6">
+                    <h3 class="text-lg font-bold text-blue-400 mb-4">SEO & Metadata</h3>
 
                     <div class="mb-4">
-                        <label for="meta_title" class="block text-sm font-medium text-gray-700 mb-2">Meta Title</label>
+                        <label for="meta_title" class="block text-sm font-semibold theme-text-secondary mb-2">Meta
+                            Title</label>
                         <input type="text" name="meta_title" id="meta_title" value="{{ old('meta_title') }}"
-                            class="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-orange-500 focus:border-orange-500">
+                            class="w-full px-4 py-2 theme-bg-secondary theme-border border rounded-lg focus:outline-none focus:border-blue-400 transition theme-text-primary">
                     </div>
 
                     <div class="mb-4">
-                        <label for="meta_description" class="block text-sm font-medium text-gray-700 mb-2">Meta
+                        <label for="meta_description" class="block text-sm font-semibold theme-text-secondary mb-2">Meta
                             Description</label>
                         <textarea name="meta_description" id="meta_description" rows="3"
-                            class="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-orange-500 focus:border-orange-500">{{ old('meta_description') }}</textarea>
+                            class="w-full px-4 py-2 theme-bg-secondary theme-border border rounded-lg focus:outline-none focus:border-blue-400 transition theme-text-primary">{{ old('meta_description') }}</textarea>
                     </div>
 
                     <div class="mb-4">
-                        <label for="meta_keywords" class="block text-sm font-medium text-gray-700 mb-2">Meta
+                        <label for="meta_keywords" class="block text-sm font-semibold theme-text-secondary mb-2">Meta
                             Keywords</label>
                         <input type="text" name="meta_keywords" id="meta_keywords" value="{{ old('meta_keywords') }}"
-                            class="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-orange-500 focus:border-orange-500">
+                            class="w-full px-4 py-2 theme-bg-secondary theme-border border rounded-lg focus:outline-none focus:border-blue-400 transition theme-text-primary">
                     </div>
                 </div>
 
                 <!-- Cloudinary Benefits -->
-                <div
-                    class="bg-gradient-to-br from-purple-50 to-indigo-50 rounded-lg shadow-sm border border-purple-200 p-4 md:p-6">
+                <div class="bg-blue-500/5 rounded-xl border border-blue-500/20 p-4 md:p-6 backdrop-blur-sm">
                     <div class="flex items-center mb-3">
-                        <svg class="w-6 h-6 text-purple-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01">
-                            </path>
-                        </svg>
-                        <h3 class="text-lg font-semibold text-purple-800">Cloudinary Benefits</h3>
+                        <i class="fas fa-star text-blue-400 mr-2 text-xl"></i>
+                        <h3 class="text-lg font-bold text-blue-400">Cloudinary Benefits</h3>
                     </div>
-                    <ul class="space-y-2 text-sm text-purple-800">
+                    <ul class="space-y-2 text-sm theme-text-secondary">
                         <li class="flex items-start">
-                            <svg class="w-4 h-4 mr-2 mt-0.5 flex-shrink-0 text-purple-600" fill="none" stroke="currentColor"
-                                viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7">
-                                </path>
-                            </svg>
+                            <i class="fas fa-check text-green-400 mr-2 mt-1 flex-shrink-0"></i>
                             <span><strong>Auto Optimization:</strong> Images optimized automatically</span>
                         </li>
                         <li class="flex items-start">
-                            <svg class="w-4 h-4 mr-2 mt-0.5 flex-shrink-0 text-purple-600" fill="none" stroke="currentColor"
-                                viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7">
-                                </path>
-                            </svg>
+                            <i class="fas fa-check text-green-400 mr-2 mt-1 flex-shrink-0"></i>
                             <span><strong>Fast Delivery:</strong> Global CDN for quick loading</span>
                         </li>
                     </ul>
@@ -235,6 +214,8 @@
                 selector: '.tinymce-editor',
                 height: 500,
                 menubar: true,
+                skin: 'oxide-dark',
+                content_css: 'dark',
                 plugins: [
                     'advlist', 'autolink', 'lists', 'link', 'image', 'charmap', 'preview',
                     'anchor', 'searchreplace', 'visualblocks', 'code', 'fullscreen',
@@ -248,11 +229,11 @@
                 paste_word_valid_elements: 'b,strong,i,em,h1,h2,h3,h4,h5,h6,p,ul,ol,li,a[href],span[style],div[align]',
                 paste_webkit_styles: 'color font-size font-weight font-style',
                 paste_merge_formats: true,
-                content_style: 'body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial; font-size: 16px; line-height: 1.6; color: #374151; } ' +
+                content_style: 'body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial; font-size: 16px; line-height: 1.6; color: #e2e8f0; background-color: #1e293b; } ' +
                     'p { margin: 0 0 1rem 0; } ' +
-                    'h1 { font-size: 2.25rem; font-weight: 700; margin: 2rem 0 1.5rem; } ' +
-                    'h2 { font-size: 1.875rem; font-weight: 700; margin: 1.75rem 0 1.25rem; } ' +
-                    'h3 { font-size: 1.5rem; font-weight: 700; margin: 1.5rem 0 1rem; }',
+                    'h1 { font-size: 2.25rem; font-weight: 700; margin: 2rem 0 1.5rem; color: #60a5fa; } ' +
+                    'h2 { font-size: 1.875rem; font-weight: 700; margin: 1.75rem 0 1.25rem; color: #60a5fa; } ' +
+                    'h3 { font-size: 1.5rem; font-weight: 700; margin: 1.5rem 0 1rem; color: #60a5fa; }',
                 automatic_uploads: false,
                 link_default_target: '_blank',
                 link_title: false,
@@ -264,7 +245,7 @@
                 },
                 setup: function (editor) {
                     editor.on('init', function () {
-                        console.log('TinyMCE initialized');
+                        console.log('TinyMCE initialized (Dark Mode)');
                     });
                 }
             });
@@ -294,13 +275,13 @@
 
     <style>
         .tox-tinymce {
-            border: 1px solid #d1d5db !important;
-            border-radius: 0.375rem !important;
+            border: 1px solid rgba(255, 255, 255, 0.1) !important;
+            border-radius: 0.5rem !important;
         }
 
         .tox-tinymce:focus-within {
-            border-color: #f97316 !important;
-            box-shadow: 0 0 0 3px rgba(249, 115, 22, 0.1) !important;
+            border-color: #60a5fa !important;
+            box-shadow: 0 0 0 3px rgba(96, 165, 250, 0.2) !important;
         }
 
         @media (max-width: 768px) {

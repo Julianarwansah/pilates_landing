@@ -7,6 +7,8 @@ use App\Models\Produk;
 use App\Models\KategoriProduk;
 use App\Models\Artikel;
 
+use App\Models\Testimoni;
+
 class HomeController extends Controller
 {
     public function index()
@@ -28,6 +30,9 @@ class HomeController extends Controller
             ->take(3)
             ->get();
 
-        return view('home', compact('categories', 'featured', 'products', 'latestArticles'));
+        // Get latest testimonials
+        $testimonials = Testimoni::latest()->take(6)->get();
+
+        return view('pilates', compact('categories', 'featured', 'products', 'latestArticles', 'testimonials'));
     }
 }

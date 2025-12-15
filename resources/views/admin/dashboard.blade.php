@@ -1,217 +1,207 @@
 @extends('layoutsadmin.app')
 
-@section('title', 'Dashboard Admin')
+@section('title', 'Dashboard')
 
 @section('content')
-    <div class="max-w-7xl mx-auto">
-        <!-- Page Header -->
-        <div class="mb-6">
-            <h1 class="text-2xl font-bold text-gray-800">Dashboard</h1>
-            <p class="text-gray-600">Selamat datang di panel admin</p>
+    <!-- Stats Cards -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 mb-6 sm:mb-8">
+        <!-- Total Users -->
+        <div class="bg-gradient-card backdrop-blur-sm theme-border border rounded-xl p-6 card-hover animate-fade-in-up">
+            <div class="flex items-center justify-between mb-4">
+                <div class="w-12 h-12 bg-blue-400 rounded-lg flex items-center justify-center animate-float">
+                    <i class="fas fa-users text-white text-xl"></i>
+                </div>
+                <!-- Optional: Percentage change if available -->
+            </div>
+            <h3 class="theme-text-secondary text-sm mb-1">Total Pengguna</h3>
+            <p class="text-3xl font-bold text-blue-400">{{ number_format($stats['total_users']) }}</p>
+            <div class="mt-4 w-full theme-bg-secondary rounded-full h-2">
+                <div class="bg-gradient-primary h-2 rounded-full shimmer" style="width: 70%"></div>
+            </div>
+             <p class="text-xs theme-text-secondary mt-2">Admin: {{ $stats['admin_users'] }} | Penulis: {{ $stats['penulis_users'] }}</p>
         </div>
 
-        <!-- Stats Cards -->
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
-            <!-- Total Users -->
-            <div class="bg-white rounded-lg shadow-md p-6">
-                <div class="flex items-center justify-between">
-                    <div>
-                        <p class="text-sm text-gray-600">Total Pengguna</p>
-                        <p class="text-3xl font-bold text-gray-800 mt-1">{{ number_format($stats['total_users']) }}</p>
-                        <p class="text-xs text-gray-500 mt-2">Admin: {{ $stats['admin_users'] }} | Penulis:
-                            {{ $stats['penulis_users'] }}</p>
-                    </div>
-                    <div class="bg-blue-100 rounded-full p-4">
-                        <i class="fas fa-users text-blue-600 text-2xl"></i>
-                    </div>
+        <!-- Total Products -->
+        <div class="bg-gradient-card backdrop-blur-sm theme-border border rounded-xl p-6 card-hover animate-fade-in-up delay-100">
+            <div class="flex items-center justify-between mb-4">
+                <div class="w-12 h-12 bg-blue-500 rounded-lg flex items-center justify-center animate-float">
+                    <i class="fas fa-box text-white text-xl"></i>
                 </div>
             </div>
-
-            <!-- Total Products -->
-            <div class="bg-white rounded-lg shadow-md p-6">
-                <div class="flex items-center justify-between">
-                    <div>
-                        <p class="text-sm text-gray-600">Total Produk</p>
-                        <p class="text-3xl font-bold text-gray-800 mt-1">{{ number_format($stats['total_products']) }}</p>
-                        <p class="text-xs text-gray-500 mt-2">{{ $stats['total_categories'] }} Kategori</p>
-                    </div>
-                    <div class="bg-amber-100 rounded-full p-4">
-                        <i class="fas fa-box text-amber-600 text-2xl"></i>
-                    </div>
-                </div>
+            <h3 class="theme-text-secondary text-sm mb-1">Total Produk</h3>
+            <p class="text-3xl font-bold text-blue-400">{{ number_format($stats['total_products']) }}</p>
+            <div class="mt-4 w-full theme-bg-secondary rounded-full h-2">
+                <div class="bg-gradient-primary h-2 rounded-full shimmer" style="width: 85%"></div>
             </div>
-
-            <!-- Total Articles -->
-            <div class="bg-white rounded-lg shadow-md p-6">
-                <div class="flex items-center justify-between">
-                    <div>
-                        <p class="text-sm text-gray-600">Total Artikel</p>
-                        <p class="text-3xl font-bold text-gray-800 mt-1">{{ number_format($stats['total_articles']) }}</p>
-                    </div>
-                    <div class="bg-green-100 rounded-full p-4">
-                        <i class="fas fa-newspaper text-green-600 text-2xl"></i>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Total Gallery Images -->
-            <div class="bg-white rounded-lg shadow-md p-6">
-                <div class="flex items-center justify-between">
-                    <div>
-                        <p class="text-sm text-gray-600">Gambar Galeri</p>
-                        <p class="text-3xl font-bold text-gray-800 mt-1">{{ number_format($stats['total_gallery_images']) }}
-                        </p>
-                        <p class="text-xs text-gray-500 mt-2">Total gambar produk</p>
-                    </div>
-                    <div class="bg-purple-100 rounded-full p-4">
-                        <i class="fas fa-images text-purple-600 text-2xl"></i>
-                    </div>
-                </div>
-            </div>
+            <p class="text-xs theme-text-secondary mt-2">{{ $stats['total_categories'] }} Kategori</p>
         </div>
 
-        <!-- Content Grid -->
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
-            <!-- Recent Articles -->
-            <div class="bg-white rounded-lg shadow-md">
-                <div class="px-6 py-4 border-b border-gray-200 flex justify-between items-center">
-                    <h2 class="text-lg font-semibold text-gray-800">Artikel Terbaru</h2>
-                    <a href="{{ route('admin.artikels.index') }}" class="text-sm text-amber-600 hover:text-amber-700">Lihat
-                        Semua</a>
+        <!-- Total Articles -->
+        <div class="bg-gradient-card backdrop-blur-sm theme-border border rounded-xl p-6 card-hover animate-fade-in-up delay-200">
+            <div class="flex items-center justify-between mb-4">
+                <div class="w-12 h-12 bg-blue-600 rounded-lg flex items-center justify-center animate-float">
+                    <i class="fas fa-newspaper text-white text-xl"></i>
                 </div>
-                <div class="p-6">
-                    @forelse($recent_articles as $article)
-                        <div class="flex items-center justify-between py-3 border-b border-gray-100 last:border-0">
-                            <div class="flex-1">
-                                <h3 class="text-sm font-medium text-gray-800">{{ Str::limit($article->judul, 40) }}</h3>
-                                <p class="text-xs text-gray-500 mt-1">
-                                    {{ $article->penulis->nama_lengkap ?? 'Unknown' }} •
-                                    {{ $article->created_at->diffForHumans() }}
-                                </p>
-                            </div>
-                            <div>
-                                @if($article->published_at)
-                                    <span class="px-2 py-1 text-xs rounded-full bg-green-100 text-green-800">Published</span>
-                                @endif
-                            </div>
+            </div>
+            <h3 class="theme-text-secondary text-sm mb-1">Total Artikel</h3>
+            <p class="text-3xl font-bold text-blue-400">{{ number_format($stats['total_articles']) }}</p>
+             <div class="mt-4 w-full theme-bg-secondary rounded-full h-2">
+                <div class="bg-gradient-primary h-2 rounded-full shimmer" style="width: 60%"></div>
+            </div>
+             <p class="text-xs theme-text-secondary mt-2">Published: {{ $stats['published_articles'] }}</p>
+        </div>
+
+        <!-- Total Gallery -->
+        <div class="bg-gradient-card backdrop-blur-sm theme-border border rounded-xl p-6 card-hover animate-fade-in-up delay-300">
+            <div class="flex items-center justify-between mb-4">
+                <div class="w-12 h-12 bg-blue-400 rounded-lg flex items-center justify-center animate-float">
+                    <i class="fas fa-images text-white text-xl"></i>
+                </div>
+            </div>
+            <h3 class="theme-text-secondary text-sm mb-1">Gambar Galeri</h3>
+            <p class="text-3xl font-bold text-blue-400">{{ number_format($stats['total_gallery_images']) }}</p>
+            <div class="mt-4 w-full theme-bg-secondary rounded-full h-2">
+                <div class="bg-gradient-primary h-2 rounded-full shimmer" style="width: 90%"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Content Grid -->
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
+        <!-- Recent Articles -->
+        <div class="bg-gradient-card backdrop-blur-sm theme-border border rounded-xl p-6 animate-fade-in-up delay-400">
+            <div class="flex justify-between items-center mb-6">
+                <h2 class="text-lg font-bold text-blue-400">Artikel Terbaru</h2>
+                <a href="{{ route('admin.artikels.index') }}" class="text-sm theme-text-secondary hover:text-blue-400 transition-colors">Lihat Semua</a>
+            </div>
+            <div class="space-y-4">
+                @forelse($recent_articles as $article)
+                    <div class="flex items-center justify-between p-3 rounded-lg hover:bg-blue-400/10 transition-all duration-300 theme-border border-b last:border-0 border-dashed">
+                        <div class="flex-1 min-w-0 mr-4">
+                            <h3 class="text-sm font-medium theme-text-primary truncate">{{ $article->judul }}</h3>
+                             <p class="text-xs theme-text-secondary mt-1">
+                                {{ $article->penulis->nama_lengkap ?? 'Unknown' }} • {{ $article->created_at->diffForHumans() }}
+                            </p>
                         </div>
-                    @empty
-                        <p class="text-gray-500 text-center py-4">Belum ada artikel</p>
-                    @endforelse
-                </div>
+                        <div>
+                             @if($article->published_at)
+                                <span class="px-2 py-1 text-xs rounded-full bg-green-500/20 text-green-400">Published</span>
+                            @else
+                                <span class="px-2 py-1 text-xs rounded-full bg-yellow-500/20 text-yellow-400">Draft</span>
+                            @endif
+                        </div>
+                    </div>
+                @empty
+                    <p class="text-center theme-text-secondary py-4">Belum ada artikel</p>
+                @endforelse
             </div>
+        </div>
 
-            <!-- Recent Products -->
-            <div class="bg-white rounded-lg shadow-md">
-                <div class="px-6 py-4 border-b border-gray-200 flex justify-between items-center">
-                    <h2 class="text-lg font-semibold text-gray-800">Produk Terbaru</h2>
-                    <a href="{{ route('admin.produk.index') }}" class="text-sm text-amber-600 hover:text-amber-700">Lihat
-                        Semua</a>
-                </div>
-                <div class="p-6">
-                    @forelse($recent_products as $product)
-                        <div class="flex items-center justify-between py-3 border-b border-gray-100 last:border-0">
-                            <div class="flex items-center flex-1">
-                                @if($product->gambar_utama)
-                                    <img src="{{ asset('storage/' . $product->gambar_utama) }}" alt="{{ $product->nama_produk }}"
-                                        class="w-10 h-10 rounded object-cover mr-3">
-                                @else
-                                    <div class="w-10 h-10 rounded bg-gray-200 mr-3 flex items-center justify-center">
-                                        <i class="fas fa-image text-gray-400"></i>
-                                    </div>
-                                @endif
-                                <div>
-                                    <h3 class="text-sm font-medium text-gray-800">{{ Str::limit($product->nama_produk, 30) }}
-                                    </h3>
-                                    <p class="text-xs text-gray-500 mt-1">{{ $product->kategori->nama_kategori ?? '-' }}</p>
+        <!-- Recent Products -->
+        <div class="bg-gradient-card backdrop-blur-sm theme-border border rounded-xl p-6 animate-fade-in-up delay-500">
+             <div class="flex justify-between items-center mb-6">
+                <h2 class="text-lg font-bold text-blue-400">Produk Terbaru</h2>
+                <a href="{{ route('admin.produk.index') }}" class="text-sm theme-text-secondary hover:text-blue-400 transition-colors">Lihat Semua</a>
+            </div>
+            <div class="space-y-4">
+                @forelse($recent_products as $product)
+                    <div class="flex items-center justify-between p-3 rounded-lg hover:bg-blue-400/10 transition-all duration-300 theme-border border-b last:border-0 border-dashed">
+                        <div class="flex items-center flex-1 min-w-0">
+                            @if($product->gambar_utama)
+                                <img src="{{ asset('storage/' . $product->gambar_utama) }}" alt="{{ $product->nama_produk }}"
+                                    class="w-10 h-10 rounded object-cover mr-3 theme-border border">
+                            @else
+                                <div class="w-10 h-10 rounded theme-bg-secondary mr-3 flex items-center justify-center theme-border border">
+                                    <i class="fas fa-image theme-text-secondary"></i>
                                 </div>
-                            </div>
-                            <div class="text-xs text-gray-500">
-                                {{ $product->created_at->diffForHumans() }}
+                            @endif
+                            <div class="min-w-0">
+                                <h3 class="text-sm font-medium theme-text-primary truncate">{{ $product->nama_produk }}</h3>
+                                <p class="text-xs theme-text-secondary mt-1">{{ $product->kategori->nama_kategori ?? '-' }}</p>
                             </div>
                         </div>
-                    @empty
-                        <p class="text-gray-500 text-center py-4">Belum ada produk</p>
-                    @endforelse
-                </div>
+                         <div class="text-xs theme-text-secondary ml-2 whitespace-nowrap">
+                            {{ $product->created_at->diffForHumans() }}
+                        </div>
+                    </div>
+                @empty
+                     <p class="text-center theme-text-secondary py-4">Belum ada produk</p>
+                @endforelse
+            </div>
+        </div>
+    </div>
+    
+    <!-- Bottom Grid -->
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
+        <!-- Popular Articles -->
+         <div class="bg-gradient-card backdrop-blur-sm theme-border border rounded-xl p-6 animate-fade-in-up delay-600">
+             <div class="flex justify-between items-center mb-6">
+                <h2 class="text-lg font-bold text-blue-400">Artikel Populer</h2>
+            </div>
+            <div class="space-y-4">
+                 @forelse($popular_articles as $article)
+                    <div class="flex items-center justify-between p-3 rounded-lg hover:bg-blue-400/10 transition-all duration-300 theme-border border-b last:border-0 border-dashed">
+                         <div class="flex-1 min-w-0">
+                                <h3 class="text-sm font-medium theme-text-primary truncate">{{ $article->judul }}</h3>
+                            </div>
+                            <div class="flex items-center text-xs theme-text-secondary ml-4">
+                                <i class="fas fa-eye mr-1"></i> {{ number_format($article->views) }}
+                            </div>
+                    </div>
+                @empty
+                     <p class="text-center theme-text-secondary py-4">Belum ada data</p>
+                @endforelse
             </div>
         </div>
 
-        <!-- Bottom Grid -->
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
-            <!-- Popular Articles -->
-            <div class="bg-white rounded-lg shadow-md">
-                <div class="px-6 py-4 border-b border-gray-200">
-                    <h2 class="text-lg font-semibold text-gray-800">Artikel Populer</h2>
-                </div>
-                <div class="p-6">
-                    @forelse($popular_articles as $article)
-                        <div class="flex items-center justify-between py-3 border-b border-gray-100 last:border-0">
-                            <div class="flex-1">
-                                <h3 class="text-sm font-medium text-gray-800">{{ Str::limit($article->judul, 40) }}</h3>
-                                <p class="text-xs text-gray-500 mt-1">
-                                    <i class="fas fa-eye"></i> {{ number_format($article->views) }} views
-                                </p>
-                            </div>
-                        </div>
-                    @empty
-                        <p class="text-gray-500 text-center py-4">Belum ada data</p>
-                    @endforelse
-                </div>
+        <!-- Products by Category -->
+         <div class="bg-gradient-card backdrop-blur-sm theme-border border rounded-xl p-6 animate-fade-in-up delay-600">
+            <div class="flex justify-between items-center mb-6">
+                <h2 class="text-lg font-bold text-blue-400">Produk per Kategori</h2>
             </div>
+             <div class="space-y-4">
+                 @forelse($products_by_category as $category)
+                    <div class="flex items-center justify-between p-3 rounded-lg hover:bg-blue-400/10 transition-all duration-300 theme-border border-b last:border-0 border-dashed">
+                         <div class="flex-1 min-w-0">
+                            <h3 class="text-sm font-medium theme-text-primary">{{ $category->nama_kategori }}</h3>
+                        </div>
+                        <div>
+                             <span class="px-3 py-1 text-xs rounded-full bg-blue-500/20 text-blue-400 font-medium whitespace-nowrap">
+                                {{ $category->produk_count }} produk
+                            </span>
+                        </div>
+                    </div>
+                 @empty
+                    <p class="text-center theme-text-secondary py-4">Belum ada kategori</p>
+                 @endforelse
+             </div>
+         </div>
+      </div>
 
-            <!-- Products by Category -->
-            <div class="bg-white rounded-lg shadow-md">
-                <div class="px-6 py-4 border-b border-gray-200">
-                    <h2 class="text-lg font-semibold text-gray-800">Produk per Kategori</h2>
-                </div>
-                <div class="p-6">
-                    @forelse($products_by_category as $category)
-                        <div class="flex items-center justify-between py-3 border-b border-gray-100 last:border-0">
-                            <div class="flex-1">
-                                <h3 class="text-sm font-medium text-gray-800">{{ $category->nama_kategori }}</h3>
-                            </div>
-                            <div>
-                                <span class="px-3 py-1 text-sm rounded-full bg-amber-100 text-amber-800 font-medium">
-                                    {{ $category->produk_count }} produk
-                                </span>
-                            </div>
-                        </div>
-                    @empty
-                        <p class="text-gray-500 text-center py-4">Belum ada kategori</p>
-                    @endforelse
-                </div>
-            </div>
+    <!-- Recent Activity Log -->
+    <div class="bg-gradient-card backdrop-blur-sm theme-border border rounded-xl p-6 animate-fade-in-up delay-700">
+         <div class="flex justify-between items-center mb-6">
+            <h2 class="text-lg font-bold text-blue-400">Aktivitas Terbaru</h2>
+            <a href="{{ route('admin.activity-logs.index') }}" class="text-sm theme-text-secondary hover:text-blue-400 transition-colors">Lihat Semua</a>
         </div>
-
-        <!-- Recent Activity Log -->
-        <div class="bg-white rounded-lg shadow-md mt-6">
-            <div class="px-6 py-4 border-b border-gray-200 flex justify-between items-center">
-                <h2 class="text-lg font-semibold text-gray-800">Aktivitas Terbaru</h2>
-                <a href="{{ route('admin.activity-logs.index') }}" class="text-sm text-amber-600 hover:text-amber-700">Lihat
-                    Semua</a>
-            </div>
-            <div class="p-6">
-                <div class="space-y-3">
-                    @forelse($recent_activities as $activity)
-                        <div class="flex items-start py-2 border-b border-gray-100 last:border-0">
-                            <div class="flex-shrink-0 w-8 h-8 rounded-full bg-gray-200 flex items-center justify-center mr-3">
-                                <i class="fas fa-user text-gray-600 text-sm"></i>
-                            </div>
-                            <div class="flex-1">
-                                <p class="text-sm text-gray-800">
-                                    <span class="font-medium">{{ $activity->user->nama_lengkap ?? 'System' }}</span>
-                                    <span class="text-gray-600">{{ $activity->action }}</span>
-                                    <span class="font-medium">{{ $activity->model_type }}</span>
-                                </p>
-                                <p class="text-xs text-gray-500 mt-1">{{ $activity->created_at->diffForHumans() }}</p>
-                            </div>
-                        </div>
-                    @empty
-                        <p class="text-gray-500 text-center py-4">Belum ada aktivitas</p>
-                    @endforelse
+        <div class="space-y-4">
+             @forelse($recent_activities as $activity)
+                <div class="flex items-start p-3 rounded-lg hover:bg-blue-400/10 transition-all duration-300 theme-border border-b last:border-0 border-dashed">
+                     <div class="flex-shrink-0 w-8 h-8 rounded-full bg-blue-400/20 flex items-center justify-center mr-3">
+                        <i class="fas fa-user text-blue-400 text-sm"></i>
+                    </div>
+                    <div class="flex-1 min-w-0">
+                         <p class="text-sm theme-text-primary">
+                            <span class="font-medium text-blue-400">{{ $activity->user->nama_lengkap ?? 'System' }}</span>
+                            <span class="theme-text-secondary">{{ $activity->action }}</span>
+                            <span class="font-medium text-blue-400">{{ $activity->model_type }}</span>
+                        </p>
+                        <p class="text-xs theme-text-secondary mt-1">{{ $activity->created_at->diffForHumans() }}</p>
+                    </div>
                 </div>
-            </div>
+             @empty
+                 <p class="text-center theme-text-secondary py-4">Belum ada aktivitas</p>
+             @endforelse
         </div>
     </div>
 @endsection

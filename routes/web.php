@@ -9,13 +9,10 @@ use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\DashboardController;
 
 // Public Routes
-Route::get('/', function () {
-    return view('pilates');
-});
+Route::get('/', [HomeController::class, 'index'])->name('home');
 
-Route::get('/artikel', function () {
-    return view('artikel');
-});
+Route::get('/artikel', [ArtikelController::class, 'list'])->name('artikels.index');
+Route::get('/artikel/{slug}', [ArtikelController::class, 'detail'])->name('artikel.detail');
 
 Route::get('/welcome', function () {
     return view('welcome');

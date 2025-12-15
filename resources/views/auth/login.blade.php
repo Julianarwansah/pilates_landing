@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login - CashFlow Mandiri</title>
+    <title>Login - Pilates Produk Sports</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -383,45 +383,45 @@
                                 <i class="fas fa-crown text-white text-3xl"></i>
                             </div>
                             <div>
-                                <h1 class="text-4xl font-bold text-blue-400">CashFlow Mandiri</h1>
-                                <p class="text-sm theme-text-secondary">Pencatatan Keuangan Pribadi</p>
+                                <h1 class="text-4xl font-bold text-blue-400">Pilates Produk Sports</h1>
+                                <p class="text-sm theme-text-secondary">Premium Sports Equipment</p>
                             </div>
                         </div>
 
                         <!-- Welcome Text -->
-                        <h2 class="text-4xl font-bold theme-text-primary mb-4">Selamat Datang!</h2>
-                        <p class="text-lg theme-text-secondary mb-8">Masuk untuk mulai mencatat dan memantau arus kas
-                            pribadi Anda dengan mudah.</p>
+                        <h2 class="text-4xl font-bold theme-text-primary mb-4">Selamat Datang Admin!</h2>
+                        <p class="text-lg theme-text-secondary mb-8">Masuk untuk mengelola data produk, artikel, dan
+                            konten website.</p>
 
                         <!-- Features List -->
                         <div class="space-y-4">
                             <div class="flex items-center space-x-4 animate-fade-in-up delay-100">
                                 <div class="w-12 h-12 bg-blue-400/20 rounded-lg flex items-center justify-center">
-                                    <i class="fas fa-wallet text-blue-400 text-xl"></i>
+                                    <i class="fas fa-box text-blue-400 text-xl"></i>
                                 </div>
                                 <div class="text-left">
-                                    <h3 class="font-semibold theme-text-primary">Catat Transaksi</h3>
-                                    <p class="text-sm theme-text-secondary">Rekam pemasukan dan pengeluaran harian</p>
+                                    <h3 class="font-semibold theme-text-primary">Manajemen Produk</h3>
+                                    <p class="text-sm theme-text-secondary">Kelola katalog dan stok brang</p>
                                 </div>
                             </div>
 
                             <div class="flex items-center space-x-4 animate-fade-in-up delay-200">
                                 <div class="w-12 h-12 bg-blue-500/20 rounded-lg flex items-center justify-center">
-                                    <i class="fas fa-chart-pie text-blue-500 text-xl"></i>
+                                    <i class="fas fa-newspaper text-blue-500 text-xl"></i>
                                 </div>
                                 <div class="text-left">
-                                    <h3 class="font-semibold theme-text-primary">Analisa Keuangan</h3>
-                                    <p class="text-sm theme-text-secondary">Grafik visual kondisi keuangan Anda</p>
+                                    <h3 class="font-semibold theme-text-primary">Kelola Artikel</h3>
+                                    <p class="text-sm theme-text-secondary">Update konten blog dan berita</p>
                                 </div>
                             </div>
 
                             <div class="flex items-center space-x-4 animate-fade-in-up delay-300">
                                 <div class="w-12 h-12 bg-blue-600/20 rounded-lg flex items-center justify-center">
-                                    <i class="fas fa-bullseye text-blue-600 text-xl"></i>
+                                    <i class="fas fa-users text-blue-600 text-xl"></i>
                                 </div>
                                 <div class="text-left">
-                                    <h3 class="font-semibold theme-text-primary">Atur Budget</h3>
-                                    <p class="text-sm theme-text-secondary">Kelola anggaran agar lebih hemat</p>
+                                    <h3 class="font-semibold theme-text-primary">Data User</h3>
+                                    <p class="text-sm theme-text-secondary">Manajemen pengguna dan hak akses</p>
                                 </div>
                             </div>
                         </div>
@@ -450,8 +450,8 @@
                                 <i class="fas fa-crown text-white text-xl"></i>
                             </div>
                             <div>
-                                <h1 class="text-2xl font-bold text-blue-400">CashFlow</h1>
-                                <p class="text-xs theme-text-secondary">Pencatatan Pribadi</p>
+                                <h1 class="text-2xl font-bold text-blue-400">Pilates</h1>
+                                <p class="text-xs theme-text-secondary">Produk Sports</p>
                             </div>
                         </div>
 
@@ -464,9 +464,10 @@
                         <!-- Login Form -->
                         <form id="loginForm" class="space-y-6" action="{{ route('login') }}" method="POST">
                             @csrf
-                            
+
                             @if($errors->any())
-                                <div class="bg-red-500/10 border border-red-500/50 text-red-500 px-4 py-3 rounded-lg relative mb-4" role="alert">
+                                <div class="bg-red-500/10 border border-red-500/50 text-red-500 px-4 py-3 rounded-lg relative mb-4"
+                                    role="alert">
                                     <strong class="font-bold">Error!</strong>
                                     <span class="block sm:inline">{{ $errors->first() }}</span>
                                 </div>
@@ -479,8 +480,7 @@
                                 </label>
                                 <input type="email" name="email" id="email" placeholder="admin@example.com"
                                     class="input-field w-full px-4 py-3 theme-bg-secondary theme-border border rounded-lg focus:outline-none focus:border-blue-400 theme-text-primary @error('email') border-red-500 @enderror"
-                                    value="{{ old('email') }}"
-                                    required>
+                                    value="{{ old('email') }}" required>
                             </div>
 
                             <!-- Password Input -->
@@ -489,7 +489,8 @@
                                     <i class="fas fa-lock mr-2 text-blue-400"></i>Password
                                 </label>
                                 <div class="relative">
-                                    <input type="password" name="password" id="password" placeholder="Enter your password"
+                                    <input type="password" name="password" id="password"
+                                        placeholder="Enter your password"
                                         class="input-field w-full px-4 py-3 theme-bg-secondary theme-border border rounded-lg focus:outline-none focus:border-blue-400 theme-text-primary pr-12"
                                         required>
                                     <button type="button" id="togglePassword"
@@ -520,8 +521,8 @@
                                 </span>
                             </button>
 
-                             <!-- Divider -->
-                             <div class="relative animate-fade-in-up delay-500">
+                            <!-- Divider -->
+                            <div class="relative animate-fade-in-up delay-500">
                                 <div class="absolute inset-0 flex items-center">
                                     <div class="w-full border-t theme-border"></div>
                                 </div>
@@ -529,29 +530,6 @@
                                     <span class="px-4 theme-bg-secondary theme-text-secondary">Or continue with</span>
                                 </div>
                             </div>
-
-                            <!-- Social Login Buttons -->
-                            <div class="grid grid-cols-2 gap-4 animate-fade-in-up delay-600">
-                                <button type="button"
-                                    class="social-btn py-3 theme-bg-secondary theme-border border rounded-lg hover:border-blue-400 transition-all duration-300 flex items-center justify-center space-x-2">
-                                    <i class="fab fa-google text-red-500 text-xl"></i>
-                                    <span class="theme-text-primary font-medium hidden sm:inline">Google</span>
-                                </button>
-                                <button type="button"
-                                    class="social-btn py-3 theme-bg-secondary theme-border border rounded-lg hover:border-blue-400 transition-all duration-300 flex items-center justify-center space-x-2">
-                                    <i class="fab fa-facebook text-blue-600 text-xl"></i>
-                                    <span class="theme-text-primary font-medium hidden sm:inline">Facebook</span>
-                                </button>
-                            </div>
-
-                            <!-- Sign Up Link -->
-                            <p class="text-center theme-text-secondary text-sm animate-fade-in-up delay-700">
-                                Don't have an account?
-                                <a href="{{ route('signup') }}"
-                                    class="text-blue-400 hover:text-blue-300 font-semibold transition-colors">
-                                    Sign up now
-                                </a>
-                            </p>
                         </form>
 
                     </div>
