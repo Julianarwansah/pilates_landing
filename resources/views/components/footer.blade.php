@@ -8,13 +8,13 @@
             <div>
                 <h4 class="text-sm font-bold mb-4" style="color: var(--text-primary);">Pages</h4>
                 <ul class="space-y-2">
-                    <li><a href="/" class="text-sm transition-colors hover:opacity-70"
+                    <li><a href="{{ url('/') }}" class="text-sm transition-colors hover:opacity-70"
                             style="color: var(--text-secondary);">Beranda</a></li>
-                    <li><a href="#features" class="text-sm transition-colors hover:opacity-70"
+                    <li><a href="{{ url('/#features') }}" class="text-sm transition-colors hover:opacity-70"
                             style="color: var(--text-secondary);">Keunggulan</a></li>
-                    <li><a href="#products" class="text-sm transition-colors hover:opacity-70"
+                    <li><a href="{{ url('/#products') }}" class="text-sm transition-colors hover:opacity-70"
                             style="color: var(--text-secondary);">Produk</a></li>
-                    <li><a href="#pricing" class="text-sm transition-colors hover:opacity-70"
+                    <li><a href="{{ url('/#pricing') }}" class="text-sm transition-colors hover:opacity-70"
                             style="color: var(--text-secondary);">Harga</a></li>
                 </ul>
             </div>
@@ -23,7 +23,7 @@
             <div>
                 <h4 class="text-sm font-bold mb-4" style="color: var(--text-primary);">Resources</h4>
                 <ul class="space-y-2">
-                    <li><a href="/artikel" class="text-sm transition-colors hover:opacity-70"
+                    <li><a href="{{ url('/artikel') }}" class="text-sm transition-colors hover:opacity-70"
                             style="color: var(--text-secondary);">Artikel</a></li>
                     <li><a href="#" class="text-sm transition-colors hover:opacity-70"
                             style="color: var(--text-secondary);">Panduan</a></li>
