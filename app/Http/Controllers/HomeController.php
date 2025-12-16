@@ -13,8 +13,8 @@ class HomeController extends Controller
 {
     public function index()
     {
-        // Get featured / rekomendasi products first, falling back to latest products
-        $featured = Produk::where('rekomendasi', 'yes')->take(8)->get();
+        // Get all products, ordered by latest
+        $featured = Produk::orderBy('created_at', 'desc')->get();
 
         // For the grid, we'll show products with gambar_utama or the first gambar
         $products = Produk::with('gambar')->orderBy('created_at', 'desc')->take(24)->get();

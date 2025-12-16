@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Produk;
-use App\Models\KategoriProduk;
 use App\Models\Artikel;
 use App\Models\GambarProduk;
 use App\Models\ActivityLog;
@@ -23,7 +22,6 @@ class DashboardController extends Controller
         $stats = [
             'total_users' => User::count(),
             'total_products' => Produk::count(),
-            'total_categories' => KategoriProduk::count(),
             'total_articles' => Artikel::count(),
             'total_gallery_images' => GambarProduk::count(),
             'published_articles' => Artikel::whereNotNull('published_at')->count(),
@@ -39,8 +37,7 @@ class DashboardController extends Controller
             ->get();
 
         // Recent products
-        $recent_products = Produk::with('kategori')
-            ->latest()
+        $recent_products = Produk::latest()
             ->take(5)
             ->get();
 
@@ -56,19 +53,12 @@ class DashboardController extends Controller
             ->take(5)
             ->get();
 
-        // Products by category
-        $products_by_category = KategoriProduk::withCount('produk')
-            ->orderBy('produk_count', 'desc')
-            ->take(5)
-            ->get();
-
         return view('admin.dashboard', compact(
             'stats',
             'recent_articles',
             'recent_products',
             'recent_activities',
-            'popular_articles',
-            'products_by_category'
+            'popular_articles'
         ));
     }
 }

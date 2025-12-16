@@ -33,7 +33,6 @@
             <div class="mt-4 w-full theme-bg-secondary rounded-full h-2">
                 <div class="bg-gradient-primary h-2 rounded-full shimmer" style="width: 85%"></div>
             </div>
-            <p class="text-xs theme-text-secondary mt-2">{{ $stats['total_categories'] }} Kategori</p>
         </div>
 
         <!-- Total Articles -->
@@ -117,7 +116,7 @@
                             @endif
                             <div class="min-w-0">
                                 <h3 class="text-sm font-medium theme-text-primary truncate">{{ $product->nama_produk }}</h3>
-                                <p class="text-xs theme-text-secondary mt-1">{{ $product->kategori->nama_kategori ?? '-' }}</p>
+
                             </div>
                         </div>
                          <div class="text-xs theme-text-secondary ml-2 whitespace-nowrap">
@@ -154,28 +153,6 @@
             </div>
         </div>
 
-        <!-- Products by Category -->
-         <div class="bg-gradient-card backdrop-blur-sm theme-border border rounded-xl p-6 animate-fade-in-up delay-600">
-            <div class="flex justify-between items-center mb-6">
-                <h2 class="text-lg font-bold text-blue-400">Produk per Kategori</h2>
-            </div>
-             <div class="space-y-4">
-                 @forelse($products_by_category as $category)
-                    <div class="flex items-center justify-between p-3 rounded-lg hover:bg-blue-400/10 transition-all duration-300 theme-border border-b last:border-0 border-dashed">
-                         <div class="flex-1 min-w-0">
-                            <h3 class="text-sm font-medium theme-text-primary">{{ $category->nama_kategori }}</h3>
-                        </div>
-                        <div>
-                             <span class="px-3 py-1 text-xs rounded-full bg-blue-500/20 text-blue-400 font-medium whitespace-nowrap">
-                                {{ $category->produk_count }} produk
-                            </span>
-                        </div>
-                    </div>
-                 @empty
-                    <p class="text-center theme-text-secondary py-4">Belum ada kategori</p>
-                 @endforelse
-             </div>
-         </div>
       </div>
 
     <!-- Recent Activity Log -->

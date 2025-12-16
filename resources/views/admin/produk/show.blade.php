@@ -63,10 +63,6 @@
                             <p class="text-base font-medium text-gray-800">{{ $produk->slug }}</p>
                         </div>
                         <div>
-                            <p class="text-sm text-gray-500">Kategori</p>
-                            <p class="text-base font-medium text-gray-800">{{ $produk->kategori->nama_kategori ?? '-' }}</p>
-                        </div>
-                        <div>
                             <p class="text-sm text-gray-500">Dibuat</p>
                             <p class="text-base font-medium text-gray-800">{{ $produk->created_at->format('d M Y H:i') }}
                             </p>
