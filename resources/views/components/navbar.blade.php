@@ -4,7 +4,8 @@
         <div class="flex items-center justify-between h-20">
 
             {{-- Logo --}}
-            <a href="/" class="text-2xl font-bold" style="color: var(--text-primary);">
+            <a href="https://www.joulwinn.com/pilates/#hero" class="text-2xl font-bold"
+                style="color: var(--text-primary);">
                 <span style="color: var(--accent-primary);">Pilates</span>Pro
             </a>
 
