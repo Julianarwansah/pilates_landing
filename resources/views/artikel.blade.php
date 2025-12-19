@@ -43,20 +43,23 @@
             </div>
 
             <!-- Articles Grid -->
+            <!-- Articles Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 @forelse($artikels as $article)
                     <article
-                        class="rounded-2xl overflow-hidden transition-all duration-300 hover:-translate-y-2 border group stagger-item flex flex-col h-full"
+                        class="rounded-2xl overflow-hidden transition-all duration-300 hover:-translate-y-2 border group flex flex-col h-full"
                         style="background-color: var(--bg-secondary); border-color: var(--border-color);">
-                        
+
                         @if($article->gambar_featured)
-                        <div class="aspect-video overflow-hidden">
-                            <img src="{{ asset('storage/' . $article->gambar_featured) }}" alt="{{ $article->judul }}" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
-                        </div>
+                            <div class="aspect-video overflow-hidden">
+                                <img src="{{ asset('storage/' . $article->gambar_featured) }}" alt="{{ $article->judul }}"
+                                    class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+                            </div>
                         @else
-                        {{-- Fallback image or pattern could go here --}}
-                        <div class="aspect-video bg-gray-800 flex items-center justify-center">
-                            <i class="fas fa-newspaper text-4xl text-gray-600"></i>
-                        </div>
+                            {{-- Fallback image or pattern could go here --}}
+                            <div class="aspect-video bg-gray-800 flex items-center justify-center">
+                                <i class="fas fa-newspaper text-4xl text-gray-600"></i>
+                            </div>
                         @endif
 
                         <div class="p-6 flex-1 flex flex-col">
@@ -75,7 +78,8 @@
                                 {{ $article->judul }}
                             </h3>
 
-                            <p class="text-sm leading-relaxed mb-4 flex-1 line-clamp-3" style="color: var(--text-secondary);">
+                            <p class="text-sm leading-relaxed mb-4 flex-1 line-clamp-3"
+                                style="color: var(--text-secondary);">
                                 {{ $article->excerpt }}
                             </p>
 
@@ -105,10 +109,10 @@
             <div class="mt-12 flex justify-center">
                 {{ $artikels->links() }}
 
+            </div>
         </div>
-    </div>
 
-    <x-footer />
+        <x-footer />
 </body>
 
 </html>

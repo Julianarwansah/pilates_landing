@@ -81,11 +81,36 @@
             margin-bottom: 1.25em;
             color: var(--text-primary);
         }
+
+        /* Explicit Dark Mode Overrides */
+        :is(.dark) .prose h2,
+        :is(.dark) .prose h3,
+        :is(.dark) .prose strong,
+        :is(.dark) .prose blockquote {
+            color: #ffffff !important;
+        }
+
+        :is(.dark) .prose p,
+        :is(.dark) .prose ul,
+        :is(.dark) .prose ol {
+            color: #d1d5db !important;
+        }
+
+        :is(.dark) .prose a {
+            color: #8b5cf6 !important;
+        }
     </style>
 </head>
 
-<body class="antialiased font-sans" style="background-color: var(--bg-primary); color: var(--text-primary);">
+<body class="antialiased font-sans dark:text-white"
+    style="background-color: var(--bg-primary); color: var(--text-primary);">
     <x-navbar />
+
+    <!-- Theme Toggle Button -->
+    <button id="theme-toggle"
+        class="fixed top-6 right-6 z-50 p-3 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 border"
+        style="background-color: var(--bg-secondary); border-color: var(--border-color);" aria-label="Toggle theme">
+    </button>
 
     <!-- Progress Bar -->
     <div class="fixed top-0 left-0 h-1 bg-gradient-to-r from-blue-400 to-blue-600 z-50 transition-all duration-300"
@@ -136,7 +161,8 @@
                     </div>
                     <div class="text-left">
                         <p class="text-sm font-semibold" style="color: var(--text-primary);">
-                            {{ $artikel->penulis->name ?? 'Admin' }}</p>
+                            {{ $artikel->penulis->name ?? 'Admin' }}
+                        </p>
                         <p class="text-xs" style="color: var(--text-secondary);">Penulis</p>
                     </div>
                 </div>
