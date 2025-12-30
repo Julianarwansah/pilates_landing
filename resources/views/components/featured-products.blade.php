@@ -21,7 +21,7 @@
                     {{-- Product Image --}}
                     <div class="aspect-[4/3] overflow-hidden" style="background-color: var(--bg-tertiary);">
                         @if ($product->gambar_utama)
-                            <img src="{{ asset('storage/' . $product->gambar_utama) }}" alt="{{ $product->nama_produk }}"
+                            <img src="{{ $product->gambar_utama }}" alt="{{ $product->nama_produk }}"
                                 class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
                         @else
                             <div class="w-full h-full flex items-center justify-center text-gray-500">
